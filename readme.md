@@ -33,8 +33,7 @@
     * Gérer la partie controller et repository
 * Créer une page Catégories
     * Cette page affiche la liste des catégories
-* Rendre les catégories cliquable
-    * Cela redirige une page qui affiche le nom de la catégorie et les sondages de cette catégorie
+    * Quand on clique sur une catégorie cela affiche une page qui affiche le nom de la catégorie et les sondages de cette catégorie
 
 ## Bonus
 * Ajouter un système de commentaire sur les sondages
