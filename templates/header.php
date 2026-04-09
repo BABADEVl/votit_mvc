@@ -1,6 +1,8 @@
 <?php
     $mainMenu = [
         '/' => 'Accueil',
+        "/about/" => 'A propos',
+        "/category/list/" => 'Catégories',
         '/poll/list' => 'Listes des sondages',
         '/poll/create' => 'Créer un sondage',
     ];

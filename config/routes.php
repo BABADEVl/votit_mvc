@@ -13,4 +13,6 @@ return [
     "/register/" => ["controller" => "App\\Controller\\UserController", "action" => "register"],
     "/register/post/" => ["controller" => "App\\Controller\\UserController", "action" => "registerPost"],
     "/legal/" => ["controller" => "App\\Controller\\PageController", "action" => "legal"],
+    "/category/list/" => ["controller" => "App\\Controller\\CategoryController", "action" => "list"],
+    "/category/" => ["controller" => "App\\Controller\\CategoryController", "action" => "show"],
 ];

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 24 oct. 2023 à 10:07
--- Version du serveur : 5.7.36
--- Version de PHP : 8.0.13
+-- Généré le : jeu. 09 avr. 2026 à 08:08
+-- Version du serveur : 8.4.7
+-- Version de PHP : 8.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Déchargement des données de la table `category`
@@ -52,15 +52,15 @@ INSERT INTO `category` (`id`, `name`) VALUES
 
 DROP TABLE IF EXISTS `poll`;
 CREATE TABLE IF NOT EXISTS `poll` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `category_id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
+  `category_id` int UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Déchargement des données de la table `poll`
@@ -79,12 +79,12 @@ INSERT INTO `poll` (`id`, `title`, `description`, `user_id`, `category_id`) VALU
 
 DROP TABLE IF EXISTS `poll_item`;
 CREATE TABLE IF NOT EXISTS `poll_item` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `poll_id` int(11) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `poll_id` int UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   KEY `poll_id` (`poll_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Déchargement des données de la table `poll_item`
@@ -112,14 +112,14 @@ INSERT INTO `poll_item` (`id`, `name`, `poll_id`) VALUES
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `nickname` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `nickname` (`nickname`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `email`, `password`, `nickname`) VALUES
 (1, 'user@test.com', '$2y$10$lEzMI.H26sDsV4PzhAVBveHiTDBrH0BGSaNDAin.89cP8y/baG0vu', 'John1'),
 (2, 'user2@test.com', '$2y$10$lEzMI.H26sDsV4PzhAVBveHiTDBrH0BGSaNDAin.89cP8y/baG0vu', 'John2'),
-(3, 'user3@test.com', '$2y$10$lEzMI.H26sDsV4PzhAVBveHiTDBrH0BGSaNDAin.89cP8y/baG0vu', 'John3'),
+(3, 'user3@test.com', '$2y$10$lEzMI.H26sDsV4PzhAVBveHiTDBrH0BGSaNDAin.89cP8y/baG0vu', 'John3');
 
 -- --------------------------------------------------------
 
@@ -138,32 +138,25 @@ INSERT INTO `user` (`id`, `email`, `password`, `nickname`) VALUES
 
 DROP TABLE IF EXISTS `user_poll_item`;
 CREATE TABLE IF NOT EXISTS `user_poll_item` (
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `poll_item_id` int(11) UNSIGNED NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
+  `poll_item_id` int UNSIGNED NOT NULL,
   PRIMARY KEY (`user_id`,`poll_item_id`),
   KEY `poll_item_id` (`poll_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Déchargement des données de la table `user_poll_item`
 --
 
 INSERT INTO `user_poll_item` (`user_id`, `poll_item_id`) VALUES
-(1, 3),
 (2, 3),
 (3, 3),
-(1, 4),
 (3, 4),
 (1, 5),
-(1, 6),
 (1, 9),
 (2, 9),
-(1, 10),
 (2, 10),
-(1, 11),
-(1, 12),
 (1, 13),
-(4, 14),
 (1, 15),
 (1, 16);
 

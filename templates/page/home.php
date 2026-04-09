@@ -16,8 +16,9 @@
 <div class="row text-center">
     <h2>Les derniers sondages :</h2>
     <div class="row">
-        <?php include __DIR__ . '/../poll/poll_part.php';
-        ?>
+        <?php foreach ($polls as $poll) : 
+        include __DIR__ . '/../poll/poll_part.php'; 
+        endforeach; ?>
     </div>
 </div>
 
