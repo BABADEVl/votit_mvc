@@ -34,6 +34,11 @@
             <?php } ?>  
         </ul>
 
+        <form class="d-flex" method="get" action="/poll/search/">
+            <input class="form-control me-2" type="search" name="q" placeholder="Rechercher..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+            <button class="btn btn-outline-primary" type="submit">Rechercher</button>
+        </form>
+
         <div class="col-md-3 text-end">
             <?php if (!empty($_SESSION['user'])) { ?>
                 <span class="me-2">Bienvenue, <?= htmlspecialchars($_SESSION['user']->getNickname() ?? $_SESSION['user']->getEmail()) ?></span>
@@ -43,4 +48,5 @@
                 <a href="/register" class="btn btn-primary">Inscription</a>
             <?php } ?>
         </div>
+     </html>
     </header>

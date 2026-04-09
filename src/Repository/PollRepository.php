@@ -89,4 +89,16 @@ class PollRepository
         }
         return $polls;
     }
+
+    public function search(string $query): array
+    {
+        $stmt = Mysql::getInstance()->getPdo()->prepare('SELECT * FROM poll WHERE title LIKE ? OR description LIKE ? ORDER BY id DESC');
+        $search = '%' . $query . '%';
+        $stmt->execute([$search, $search]);
+        $polls = [];
+        while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $polls[] = new Poll($data['id'], $data['title'], $data['description'], $data['user_id'], $data['category_id']);
+        }
+        return $polls;
+    }
 }

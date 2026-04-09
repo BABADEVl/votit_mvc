@@ -6,6 +6,7 @@ return [
     "/poll/create/post/" => ["controller" => "App\\Controller\\PollController", "action" => "createPost"],
     "/poll/" => ["controller" => "App\\Controller\\PollController", "action" => "show"],
     "/poll/list/" => ["controller" => "App\\Controller\\PollController", "action" => "list"],
+    "/poll/search/" => ["controller" => "App\\Controller\\PollController", "action" => "search"],
     "/poll/vote/" => ["controller" => "App\\Controller\\PollController", "action" => "vote"],
     "/login/" => ["controller" => "App\\Controller\\AuthController", "action" => "login"],
     "/login/post/" => ["controller" => "App\\Controller\\AuthController", "action" => "loginPost"],

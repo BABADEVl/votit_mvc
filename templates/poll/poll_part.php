@@ -2,7 +2,7 @@
     <div class="card w-100">
         <div class="card-header">
             <img width="40" src="/assets/images/icon-arrow.png" alt="icone flèche haut"> 
-            <?= $poll->getCategory()->getName() ?>
+            <?= $poll->getCategory()?->getName() ?>
         </div>
         <div class="card-body d-flex flex-column">
             <h3 class="card-title">

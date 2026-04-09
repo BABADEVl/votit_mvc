@@ -62,4 +62,10 @@ class PollController extends Controller {
         header('Location: /poll/?id=' . $_GET['id']);
         exit;
     }
+
+    public function search() {
+        $q = $_GET['q'] ?? '';
+        $polls = (new PollRepository())->search($q);
+        $this->render('poll/search', ['polls' => $polls, 'q' => $q]);
+    }
 }
